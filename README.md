@@ -23,51 +23,6 @@ Aside from the **NCSN++** and **DDPM++** models in our paper, this codebase also
 
 It supports training new models, evaluating the sample quality and likelihoods of existing models. We carefully designed the code to be modular and easily extensible to new SDEs, predictors, or correctors.
 
-## **Integration with 🤗 Diffusers library**
-
-Most models are now also available in 🧨 Diffusers and accesible via the [ScoreSdeVE pipeline](https://huggingface.co/docs/diffusers/api/pipelines/score_sde_ve).
-
-Diffusers allows you to test score sde based models in PyTorch in just a couple lines of code.
-
-You can install diffusers as follows:
-
-```
-pip install diffusers torch accelerate
-```
-
-And then try out the models with just a couple lines of code:
-
-```python
-from diffusers import DiffusionPipeline
-
-model_id = "google/ncsnpp-ffhq-1024"
-
-# load model and scheduler
-sde_ve = DiffusionPipeline.from_pretrained(model_id)
-
-# run pipeline in inference (sample random noise and denoise)
-image = sde_ve().images[0]
-
-
-# save image
-image[0].save("sde_ve_generated_image.png")
-```
-
-More models can be found directly [on the Hub](https://huggingface.co/models?library=diffusers&pipeline_tag=unconditional-image-generation&sort=downloads&search=ncsnpp).
-
-## JAX version
-
-Please find a JAX implementation [here](https://github.com/yang-song/score_sde), which additionally supports class-conditional generation with a pre-trained classifier, and resuming an evalution process after pre-emption.
-
-###  JAX vs. PyTorch
-
-In general, this PyTorch version consumes less memory but runs slower than JAX. Here is a benchmark on training an NCSN++ cont. model with VE SDE. Hardware is 4x Nvidia Tesla V100 GPUs (32GB)
-| Framework | Time (second per step) | Memory usage in total (GB) |
-|:----:|:----:|:----:|
-|PyTorch | 0.56 | 20.6|
-|JAX (`n_jitted_steps=1`)| 0.30 | 29.7 |
-|JAX (`n_jitted_steps=5`) | 0.20 | 74.8|
-
 ## How to run the code
 
 ### Dependencies
@@ -161,11 +116,6 @@ Here is a detailed list of checkpoints and their results reported in the paper. 
 |[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1SeXMpILhkJPjXUaesvzEhc3Ke6Zl_zxJ?usp=sharing) | Tutorial of score-based generative models in JAX + FLAX |
 |[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/120kYYBOVa1i0TD85RjlEkFjaWDxSFUx3?usp=sharing)| Tutorial of score-based generative models in PyTorch |
 
-
-## Tips
-* When using the JAX codebase, you can jit multiple training steps together to improve training speed at the cost of more memory usage. This can be set via `config.training.n_jitted_steps`. For CIFAR-10, we recommend using `config.training.n_jitted_steps=5` when your GPU/TPU has sufficient memory; otherwise we recommend using `config.training.n_jitted_steps=1`. Our current implementation requires `config.training.log_freq` to be dividable by `n_jitted_steps` for logging and checkpointing to work normally.
-* The `snr` (signal-to-noise ratio) parameter of `LangevinCorrector` somewhat behaves like a temperature parameter. Larger `snr` typically results in smoother samples, while smaller `snr` gives more diverse but lower quality samples. Typical values of `snr` is `0.05 - 0.2`, and it requires tuning to strike the sweet spot.
-* For VE SDEs, we recommend choosing `config.model.sigma_max` to be the maximum pairwise distance between data samples in the training dataset.
 
 ## References
 
