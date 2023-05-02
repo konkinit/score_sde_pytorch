@@ -9,5 +9,6 @@ absl-py>=0.10.0
 torch>=1.7.0
 torchvision
 ninja
-matplotlib
-pandas
+matplotlib>=3.7.1
+pandas>=3.7.1
+seaborn>=3.7.1
