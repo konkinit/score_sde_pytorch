@@ -3,6 +3,15 @@
 Forked from [yang-song/score_sde_pytorch](https://github.com/yang-song/score_sde_pytorch), this repo applies 
 Score-Based Generative Modeling on Retinal OCT images.
 
+## Get started
+
+1. Update `pytorch`
+```bash
+nvidia-smi
+curl https://pytorch.org/get-started/locally/
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+
 ## Dataset
 
 
