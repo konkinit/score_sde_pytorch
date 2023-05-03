@@ -1,3 +1,6 @@
+#  Datasets
+MNIST/*
+
 # Compiled python modules.
 *.pyc
 

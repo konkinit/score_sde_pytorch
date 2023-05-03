@@ -19,8 +19,10 @@
 import ml_collections
 import torch
 
+
 def get_config():
   config = ml_collections.ConfigDict()
+
   # training
   config.training = training = ml_collections.ConfigDict()
   training.batch_size = 8

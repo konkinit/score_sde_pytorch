@@ -15,11 +15,13 @@
 
 # Lint as: python3
 """Training NCSN++ on CIFAR-10 with VE SDE."""
+
 from configs.default_cifar10_configs import get_default_configs
 
 
 def get_config():
   config = get_default_configs()
+  
   # training
   training = config.training
   training.sde = 'vesde'

@@ -193,7 +193,7 @@ class ReverseDiffusionPredictor(Predictor):
     super().__init__(sde, score_fn, probability_flow)
 
   def update_fn(self, x, t):
-    f, G = self.rsde.discretize(x, t)
+    f, G = self.rsde.discretize(x, t).to(t.device)
     z = torch.randn_like(x)
     x_mean = x - f
     x = x_mean + G[:, None, None, None] * z
@@ -214,7 +214,7 @@ class AncestralSamplingPredictor(Predictor):
     sde = self.sde
     timestep = (t * (sde.N - 1) / sde.T).long()
     sigma = sde.discrete_sigmas[timestep]
-    adjacent_sigma = torch.where(timestep == 0, torch.zeros_like(t), sde.discrete_sigmas.to(t.device)[timestep - 1])
+    adjacent_sigma = torch.where(timestep == 0, torch.zeros_like(t), sde.discrete_sigmas[timestep - 1].to(t.device))
     score = self.score_fn(x, t)
     x_mean = x + score * (sigma ** 2 - adjacent_sigma ** 2)[:, None, None, None]
     std = torch.sqrt((adjacent_sigma ** 2 * (sigma ** 2 - adjacent_sigma ** 2)) / (sigma ** 2))

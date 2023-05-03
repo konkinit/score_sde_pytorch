@@ -13,11 +13,10 @@ pip install --upgrade "jax[cuda11_local]" -f https://storage.googleapis.com/jax-
 
 1. Load a pretrained checkpoint
 ```bash
-bash get_checkpoint.sh -i 1ZRLozPVuDNc1ECHjPKbPg_s5-TaW0Wb_ -p ./exp/ve/mnist_ncsnpp/checkpoint.pth
+bash get_checkpoint.sh -i 1JInV8bPGy18QiIzZcS1iECGHCuXL6_Nz -p ./exp/ve/cifar10_ncsnpp_continuous/checkpoint.pth
 ```
 
 ## Dataset
-
 
 
 ## Results
