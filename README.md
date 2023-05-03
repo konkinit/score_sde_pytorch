@@ -5,6 +5,12 @@ Score-Based Generative Modeling on Retinal OCT images.
 
 ## Get started
 
+2. Install required packages
+```bash
+pip install -r requirements.txt
+pip install --upgrade "jax[cuda11_local]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+```
+
 1. Load a pretrained checkpoint
 ```bash
 bash get_checkpoint.sh -i 1ZRLozPVuDNc1ECHjPKbPg_s5-TaW0Wb_ -p ./exp/ve/mnist_ncsnpp/checkpoint.pth
