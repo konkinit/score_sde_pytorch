@@ -5,11 +5,9 @@ Score-Based Generative Modeling on Retinal OCT images.
 
 ## Get started
 
-1. Update `pytorch`
+1. Load a pretrained checkpoint
 ```bash
-nvidia-smi
-curl https://pytorch.org/get-started/locally/
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+bash get_checkpoint.sh -i ${fileId} -p ${filePath}
 ```
 
 ## Dataset
