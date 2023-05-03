@@ -10,5 +10,6 @@ torch>=1.7.0
 torchvision
 ninja
 matplotlib>=3.7.1
-pandas>=3.7.1
-seaborn>=3.7.1
+pandas
+seaborn
+gdown==3.6.0

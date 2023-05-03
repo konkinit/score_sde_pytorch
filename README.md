@@ -7,7 +7,7 @@ Score-Based Generative Modeling on Retinal OCT images.
 
 1. Load a pretrained checkpoint
 ```bash
-bash get_checkpoint.sh -i ${fileId} -p ${filePath}
+bash get_checkpoint.sh -i 1ZRLozPVuDNc1ECHjPKbPg_s5-TaW0Wb_ -p ./exp/ve/mnist_ncsnpp/checkpoint.pth
 ```
 
 ## Dataset

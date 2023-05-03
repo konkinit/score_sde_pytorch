@@ -6,5 +6,4 @@ do
     esac
 done
 
-
-curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=${fileId}" > "${filePath}.pth"
+gdown -O ${filePath} https://drive.google.com/uc?id=${fileId}
