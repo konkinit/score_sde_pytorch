@@ -39,7 +39,7 @@ def get_default_configs():
 
   # data
   config.data = data = ml_collections.ConfigDict()
-  data.dataset = 'MNIST'
+  data.dataset = 'FashionMNIST'
   data.image_size = 28
   data.random_flip = True
   data.centered = False

@@ -16,30 +16,29 @@ pip install -r requirements.txt
 pip install --upgrade "jax[cuda11_local]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
-3. Load a pretrained checkpoint
-```bash
-bash get_checkpoint.sh -i 1JInV8bPGy18QiIzZcS1iECGHCuXL6_Nz -p ./exp/ve/cifar10_ncsnpp_continuous/checkpoint.pth
-```
-
 ## Dataset
 
 The datset used for experiment is Fashion-MNIST, a dataset of Zalando's article images—consisting of a training \
 set of 60,000 examples and a test set of 10,000 examples. Each example is a 28x28 grayscale image, associated with \
 a label from 10 classes.
 
-## Results
+## Experminets & Results
+
+We have chosen the forward SDE to be $ d \mathbf{x} = \sigma^t d\mathbf{w}, \quad t\in[0,1] $. Formulated as this \
+it is a Varaince Exploding SDE. After training the score-based generative model, the reverse-time SDE can be \
+approximated by $ d \mathbf{x} = -\sigma^{2t} s_{\theta} (\mathbf{x}, t) dt + \sigma^t d \bar{\mathbf{w}} $.
 
 ### Score-based model training
 
-![euler_samp](./assets/fashionmnist_sampling_Euler_Maruyama_sampler.png)
+The trained model is a time-dependent score-based model built upon `U-Net` architecture.
 
-![ode_samp](./assets/fashionmnist_sampling_ode_sampler.png)
+### Sampling
 
-![pc_samp](./assets/fashionmnist_sampling_pc_sampler.png)
-
-### Sampling using SDE
-
-
+|        Sampler        | Samples |
+|:----------------------|:------:|
+| `Predictor-Corrector` | ![pc_samp](./assets/fashionmnist_sampling_pc_sampler.png) |
+| `Euler Maruyama`      | ![euler_samp](./assets/fashionmnist_sampling_Euler_Maruyama_sampler.png) |
+| `ODE`                 | ![ode_samp](./assets/fashionmnist_sampling_ode_sampler.png) |
 
 ## References
 
