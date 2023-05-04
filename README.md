@@ -1,5 +1,12 @@
 # Score-Based Generative Modeling through Stochastic Differential Equations
 
+<p align="center">
+    <a href="https://fr.overleaf.com/read/scyfwxxkjnzm">
+        <img src="https://img.shields.io/badge/Overleaf-47A141?style=for-the-badge&logo=Overleaf&logoColor=white" alt="SOURCE CODE"/> 
+    </a>
+</p>
+
+
 Forked from [yang-song/score_sde_pytorch](https://github.com/yang-song/score_sde_pytorch), this repo applies 
 Score-Based Generative Modeling on Retinal OCT images.
 
