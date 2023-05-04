@@ -23,9 +23,21 @@ bash get_checkpoint.sh -i 1JInV8bPGy18QiIzZcS1iECGHCuXL6_Nz -p ./exp/ve/cifar10_
 
 ## Dataset
 
-
+The datset used for experiment is Fashion-MNIST, a dataset of Zalando's article images—consisting of a training \
+set of 60,000 examples and a test set of 10,000 examples. Each example is a 28x28 grayscale image, associated with \
+a label from 10 classes.
 
 ## Results
+
+### Score-based model training
+
+![euler_samp](./assets/fashionmnist_sampling_Euler_Maruyama_sampler.png)
+
+![ode_samp](./assets/fashionmnist_sampling_ode_sampler.png)
+
+![pc_samp](./assets/fashionmnist_sampling_pc_sampler.png)
+
+### Sampling using SDE
 
 
 
@@ -34,11 +46,22 @@ bash get_checkpoint.sh -i 1JInV8bPGy18QiIzZcS1iECGHCuXL6_Nz -p ./exp/ve/cifar10_
 ```bib
 @inproceedings{
   song2021scorebased,
-  title={Score-Based Generative Modeling through Stochastic Differential Equations},
-  author={Yang Song and Jascha Sohl-Dickstein and Diederik P Kingma and Abhishek Kumar and Stefano Ermon and Ben Poole},
-  booktitle={International Conference on Learning Representations},
-  year={2021},
-  url={https://openreview.net/forum?id=PxTIG12RRHS}
+  title        = {Score-Based Generative Modeling through Stochastic Differential Equations},
+  author       = {Yang Song and Jascha Sohl-Dickstein and Diederik P Kingma and Abhishek Kumar and Stefano Ermon and Ben Poole},
+  booktitle    = {International Conference on Learning Representations},
+  year         = {2021},
+  url          = {https://openreview.net/forum?id=PxTIG12RRHS}
 }
 ```
 
+```bib
+@online{xiao2017/online,
+  author       = {Han Xiao and Kashif Rasul and Roland Vollgraf},
+  title        = {Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms},
+  date         = {2017-08-28},
+  year         = {2017},
+  eprintclass  = {cs.LG},
+  eprinttype   = {arXiv},
+  eprint       = {cs.LG/1708.07747},
+}
+```
