@@ -5,18 +5,24 @@ Score-Based Generative Modeling on Retinal OCT images.
 
 ## Get started
 
+1. Clone the repository
+```bash
+git clone https://github.com/konkinit/score_sde_pytorch.git
+```
+
 2. Install required packages
 ```bash
 pip install -r requirements.txt
 pip install --upgrade "jax[cuda11_local]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
-1. Load a pretrained checkpoint
+3. Load a pretrained checkpoint
 ```bash
 bash get_checkpoint.sh -i 1JInV8bPGy18QiIzZcS1iECGHCuXL6_Nz -p ./exp/ve/cifar10_ncsnpp_continuous/checkpoint.pth
 ```
 
 ## Dataset
+
 
 
 ## Results
